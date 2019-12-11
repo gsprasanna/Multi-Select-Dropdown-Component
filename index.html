@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="upgrade-insecure-requests"
+    />
+    <link rel="stylesheet" type="text/css" href="./resources/css/style.css" />
+
+    <title>MultiSelect Dropdown</title>
+  </head>
+  <body onload="insertData()">
+    <div class="menu-container">
+      <div class="menu">
+        <div class="date" id="current_date"></div>
+      </div>
+    </div>
+    <div class="header">
+      <label>
+        MULTI SELECT DROPDOWN
+      </label>
+    </div>
+    <div class="content">
+      <div class="dropdown">
+        <div
+          class="multiselect_fields dropbtn"
+          data-placeholder="Choose options"
+        ></div>
+        <div class="dropdown-content" id="multi-select">
+          <input
+            type="text"
+            placeholder="Search.."
+            id="myInput"
+            onkeyup="filterContent()"
+          />
+        </div>
+      </div>
+    </div>
+    <footer>
+      <div>
+        Made with &#10084; by Prasanna Balaji.
+        <a
+          href="https://github.com/gsprasanna/Multi-Select-Dropdown-Component/"
+        >
+          Github</a
+        >
+        <a href="https://twitter.com/Prasanna_GS_"> Twitter</a>
+        <a href="https://linkedin.com/in/prasanna-balaji-gs"> LinkedIn</a>
+      </div>
+    </footer>
+    <script type="text/javascript" src="./resources/js/script.js"></script>
+  </body>
+</html>
