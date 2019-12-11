@@ -1,0 +1,118 @@
+/* styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  height: 100px;
+  color: goldenrod;
+  font-size: larger;
+  font-family: sans-serif;
+}
+.menu {
+  width: 900px;
+  display: flex;
+  justify-content: space-between;
+}
+.content {
+  display: flex;
+  justify-content: center;
+}
+.menu-container {
+  color: #fff;
+  background-color: darkcyan;
+  padding: 20px 0;
+  display: flex;
+  justify-content: center;
+}
+.dropdown {
+  position: relative;
+  display: inline-block;
+  border: 2px solid darkcyan;
+  border-radius: 5px;
+  min-width: 300px;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  height: 350px;
+  overflow-y: scroll;
+  background-color: black;
+  border-radius: 8px;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+.multiselect_fields:empty:before {
+  content: attr(data-placeholder);
+  color: lightgrey;
+}
+.multiselect_fields {
+  width: 300px;
+  display: inline-block;
+}
+li {
+  list-style: none;
+  cursor: pointer;
+  color: lawngreen;
+  height: 25px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+li:hover {
+  color: white;
+}
+.multiselect_field {
+  position: relative;
+  display: inline-block;
+  background-color: white;
+  color: darkcyan;
+  padding: 2px 4px;
+  border-radius: 5px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  margin-bottom: 5px;
+  max-width: 99%;
+}
+.selected_content {
+  padding-right: 15px;
+}
+.del_icon {
+  position: absolute;
+  top: 2px;
+  right: 3px;
+  cursor: pointer;
+}
+#myInput {
+  box-sizing: border-box;
+  background-image: url("../../assets/images/search-icon.png");
+  background-position: -6px -5px;
+  background-repeat: no-repeat;
+  /* position: fixed; */
+  font-size: 16px;
+  padding: 14px 20px 12px 45px;
+  border: none;
+  min-width: 300px;
+  border-bottom: 1px solid #ddd;
+}
+
+#myInput:focus {
+  outline: 3px solid #ddd;
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  height: 400px;
+}
