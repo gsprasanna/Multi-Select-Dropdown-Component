@@ -4,15 +4,25 @@ const currentDate = document.querySelector("#current_date");
 const date = new Date();
 currentDate.innerHTML = date.toDateString();
 
-// insert the fetched data to dropdown
+/* 
+  fetch and insert the fetched data to dropdown.
+  async function (ES8 features) to work with promises
+*/
 insertData = async () => {
   try {
+    // call fetchdata function and get the json data
     let response = await fetchData();
     if (response) {
       let apiResult = response;
       const multiSelect = document.querySelector("#multi-select");
 
+      // Iterate through each element in the response and call the createDropDownElement.
       apiResult.forEach(createDropDownElement);
+
+      /*
+        function which create a list element, add the attributes and event eventlisteners to it.
+        List element is appended as child to #mulit-select(parent element)
+      */
       function createDropDownElement(item) {
         let listElement = document.createElement("li");
 
@@ -24,7 +34,7 @@ insertData = async () => {
         multiSelect.appendChild(listElement);
       }
     } else {
-      alert("HTTP-Error: " + response);
+      alert("Error in retrieving the data!");
     }
   } catch (e) {
     console.error(e);
@@ -36,8 +46,17 @@ const fetchData = () => {
   const requestUrl = "https://restcountries.eu/rest/v2/all";
 
   return new Promise((resolve, reject) => {
+    // fetch function used to make the network request with requestURL
     fetch(requestUrl)
-      .then(response => response.json())
+      .then(response => {
+        if (response.status >= 200 && response.status < 300) {
+          return response.json();
+        } else {
+          let error = new Error(response.statusText || response.status);
+          error.response = response;
+          reject(error);
+        }
+      })
       .then(data => {
         resolve(data);
       })
@@ -57,6 +76,11 @@ const add_selected_item = (elem, e) => {
       ".multiselect_fields"
     );
 
+    /*
+      creating the child elements for the option selected by user 
+      and 
+      append to the parent element (selected_items).
+    */
     let parentElement = document.createElement("div");
     parentElement.setAttribute("class", "multiselect_field");
     let childElement = document.createElement("div");
@@ -79,7 +103,7 @@ const add_selected_item = (elem, e) => {
 
     selected_items.appendChild(parentElement);
 
-    elem.remove();
+    elem.remove(); // remove the user selected element from dropdown list
   } catch (e) {
     console.error(e);
   }
@@ -98,6 +122,11 @@ const remove_selected_item = (elem, e) => {
       "#multi-select"
     );
 
+    /*
+      Creating a list element, adding attribute and event listeners to it.
+      Appended the list element to the dropdown list.
+    */
+
     let listElement = document.createElement("li");
 
     listElement.appendChild(document.createTextNode(option_text));
@@ -107,7 +136,8 @@ const remove_selected_item = (elem, e) => {
     });
     selector.appendChild(listElement);
 
-    elem.parentElement.remove();
+    elem.parentElement.remove(); // remove the element from the selecteed items.
+    sortListItems();
   } catch (e) {
     console.error(e);
   }
@@ -121,7 +151,11 @@ const filterContent = () => {
   let element = document.getElementById("multi-select");
   htmlCollector = element.getElementsByTagName("li");
 
-  let arr = [...htmlCollector];
+  let arr = [...htmlCollector]; //using the spread operator
+
+  /*
+    filter method used to filter the data based on the input in search box and display the filtered results.
+  */
   arr.filter(elem => {
     let value = elem.textContent || elem.innerText;
     if (value.toUpperCase().indexOf(filterValue) > -1) {
