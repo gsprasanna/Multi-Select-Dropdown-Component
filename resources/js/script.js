@@ -137,7 +137,6 @@ const remove_selected_item = (elem, e) => {
     selector.appendChild(listElement);
 
     elem.parentElement.remove(); // remove the element from the selecteed items.
-    sortListItems();
   } catch (e) {
     console.error(e);
   }
