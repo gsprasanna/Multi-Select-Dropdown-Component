@@ -9,7 +9,7 @@ Dropdown Component(i.e application) with multiple selections functionality. This
 - Uses overridable CSS for all needed style manipulations.
 - Used **ES6 and ES8 features** like `<async/await, variable keywords (let,const)>`.
 - Muliple selections are allowed.
-- Cancellable Chips are available to each selected options. Users can remove any individual selected items.
+- **Cancellable Chips** are available to each selected options. Users can remove any individual selected items.
 - Super lightweight.
 - Very easy to use.
 
