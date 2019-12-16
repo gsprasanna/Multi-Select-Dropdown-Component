@@ -70,40 +70,54 @@ const fetchData = () => {
 const add_selected_item = (elem, e) => {
   e.stopPropagation();
   try {
-    let option_text = elem.innerText;
-    let option_value = elem.getAttribute("value");
-    let selected_items = elem.parentElement.parentElement.querySelector(
-      ".multiselect_fields"
-    );
+    // debugger;
+    if (elem.classList.contains("list-selected")) {
+      elem.classList.remove("selected-items");
+      elem.classList.remove("list-selected");
+      let items = document.querySelectorAll(".selected_content");
+      let arr = [...items];
+      let removeElement = arr.find(item => {
+        if (item.textContent.includes(elem.innerText)) {
+          return item;
+        }
+      });
+      remove_selected_item(removeElement, e);
+    } else {
+      elem.classList.add("list-selected");
+      elem.classList.add("selected-items");
+      let option_text = elem.innerText;
+      let option_value = elem.getAttribute("value");
+      let selected_items = elem.parentElement.parentElement.querySelector(
+        ".multiselect_fields"
+      );
 
-    /*
+      /*
       creating the child elements for the option selected by user 
       and 
       append to the parent element (selected_items).
     */
-    let parentElement = document.createElement("div");
-    parentElement.setAttribute("class", "multiselect_field");
-    let childElement = document.createElement("div");
-    childElement.setAttribute("value", option_value);
-    childElement.setAttribute("class", "selected_content");
-    childElement.style.cssText = `color:${
-      selected_items.childElementCount % 2 === 0 ? "chocolate" : "crimson"
-    }`;
-    childElement.innerText = option_text;
-    let secondchildElement = document.createElement("div");
-    secondchildElement.setAttribute("class", "del_icon");
+      let parentElement = document.createElement("div");
+      parentElement.setAttribute("class", "multiselect_field");
+      let childElement = document.createElement("div");
+      childElement.setAttribute("value", option_value);
+      childElement.setAttribute("class", "selected_content");
 
-    secondchildElement.innerHTML = "&#10006";
-    secondchildElement.addEventListener("click", function() {
-      return remove_selected_item(this, event);
-    });
-    parentElement.appendChild(childElement);
+      childElement.innerText = option_text;
+      let secondchildElement = document.createElement("span");
+      secondchildElement.setAttribute("class", "del_icon");
 
-    parentElement.appendChild(secondchildElement);
+      secondchildElement.innerHTML = "&#10006"; //"\u00D7";
+      secondchildElement.addEventListener("click", function() {
+        return remove_selected_item(this, event);
+      });
+      childElement.appendChild(secondchildElement);
+      parentElement.appendChild(childElement);
 
-    selected_items.appendChild(parentElement);
-
-    elem.remove(); // remove the user selected element from dropdown list
+      selected_items.insertBefore(
+        parentElement,
+        selected_items.lastElementChild
+      );
+    }
   } catch (e) {
     console.error(e);
   }
@@ -113,30 +127,24 @@ const add_selected_item = (elem, e) => {
 const remove_selected_item = (elem, e) => {
   e.stopPropagation();
   try {
-    let option_text = elem.parentElement.querySelector(".selected_content")
-      .innerHTML;
-    let option_value = elem.parentElement
-      .querySelector(".selected_content")
-      .getAttribute("value");
-    let selector = elem.parentElement.parentElement.parentElement.querySelector(
-      "#multi-select"
-    );
-
-    /*
-      Creating a list element, adding attribute and event listeners to it.
-      Appended the list element to the dropdown list.
-    */
-
-    let listElement = document.createElement("li");
-
-    listElement.appendChild(document.createTextNode(option_text));
-    listElement.value = option_value;
-    listElement.addEventListener("click", function() {
-      return add_selected_item(this, event);
-    });
-    selector.appendChild(listElement);
-
-    elem.parentElement.remove(); // remove the element from the selecteed items.
+    if (elem.classList.contains("del_icon")) {
+      /*
+        remove the items from multiselect field via remove icon
+        remove the styles from dropdown list
+      */
+      elem.parentElement.parentElement.remove();
+      let items = document.querySelectorAll(".list-selected");
+      let arr = [...items];
+      let removeStyle = arr.find(item => {
+        if (elem.parentElement.textContent.includes(item.innerText)) {
+          return item;
+        }
+      });
+      removeStyle.classList.remove("list-selected");
+      removeStyle.classList.remove("selected-items");
+    } else {
+      elem.parentElement.remove(); // remove the selected item via dropdown list
+    }
   } catch (e) {
     console.error(e);
   }
@@ -163,4 +171,17 @@ const filterContent = () => {
       elem.style.display = "none";
     }
   });
+};
+
+// get all selected Items
+const getAllSelectedItems = () => {
+  let selector = document.querySelectorAll(".selected_content");
+  let arr = [...selector]; // spread operator to get the values stored in form of array
+  if (arr.length) {
+    let selectedItems = arr.map(item => item.innerText.split("\n")[0]);
+    alert(selectedItems);
+  } else {
+    alert("Please select the items!");
+  }
+  return arr;
 };
