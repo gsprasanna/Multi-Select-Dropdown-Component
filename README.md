@@ -34,7 +34,12 @@ Dropdown Component(i.e application) with multiple selections functionality. This
 
 <img width="521" alt="Screenshot 2019-12-17 at 12 54 25 AM" src="https://user-images.githubusercontent.com/51015931/70936186-cfe78b80-2067-11ea-97cf-d00824f2ed24.png">
 
+**Getting all the selected items**
+
+<img width="515" alt="Screenshot 2019-12-17 at 1 03 09 AM" src="https://user-images.githubusercontent.com/51015931/70937011-9b74cf00-2069-11ea-9395-8b4707e235fd.png">
+
 ## Future Updates
 
 - `<"Select All Options">` features. 
 - Will convert this application to component and published to npm package.
+- Change alert box to modal Box/some interesting design.
