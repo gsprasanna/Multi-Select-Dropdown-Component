@@ -28,11 +28,11 @@ Dropdown Component(i.e application) with multiple selections functionality. This
 
 **Muliple selections are allowed, users can scroll and select the items as well**
 
-<img width="568" alt="Screenshot 2019-12-17 at 12 51 56 AM" src="https://user-images.githubusercontent.com/51015931/70935995-75e6c600-2067-11ea-98cb-03febfff6914.png">
+<img width="521" alt="Screenshot 2019-12-17 at 12 51 56 AM" src="https://user-images.githubusercontent.com/51015931/70935995-75e6c600-2067-11ea-98cb-03febfff6914.png">
 
 **Each selected item are embedded with cancellable chip**
 
-<img width="504" alt="Screenshot 2019-12-17 at 12 54 25 AM" src="https://user-images.githubusercontent.com/51015931/70936186-cfe78b80-2067-11ea-97cf-d00824f2ed24.png">
+<img width="521" alt="Screenshot 2019-12-17 at 12 54 25 AM" src="https://user-images.githubusercontent.com/51015931/70936186-cfe78b80-2067-11ea-97cf-d00824f2ed24.png">
 
 ## Future Updates
 
