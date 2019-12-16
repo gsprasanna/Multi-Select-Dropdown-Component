@@ -27,16 +27,21 @@
         <div
           class="multiselect_fields dropbtn"
           data-placeholder="Choose options"
-        ></div>
-        <div class="dropdown-content" id="multi-select">
+        >
           <input
             type="text"
             placeholder="Search.."
+            onfocus="this.placeholder = ''"
+            onblur="this.placeholder = 'Search..'"
             id="myInput"
             onkeyup="filterContent()"
           />
         </div>
+        <div class="dropdown-content" id="multi-select"></div>
       </div>
+      <button class="btn-selectedValues" onclick="getAllSelectedItems()">
+        Get All Selected Values
+      </button>
     </div>
     <footer>
       <div>
