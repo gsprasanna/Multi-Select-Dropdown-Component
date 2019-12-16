@@ -21,6 +21,8 @@
 .content {
   display: flex;
   justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
 .menu-container {
   color: #fff;
@@ -32,20 +34,21 @@
 .dropdown {
   position: relative;
   display: inline-block;
-  border: 2px solid darkcyan;
+  border: 2px solid #398bde;
   border-radius: 5px;
-  min-width: 300px;
+  max-width: 300px;
 }
 
 .dropdown-content {
   display: none;
   position: absolute;
-  min-width: 160px;
+  min-width: 300px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   height: 350px;
   overflow-y: scroll;
-  background-color: black;
+  background-color: white;
   border-radius: 8px;
+  z-index: 1;
 }
 
 .dropdown:hover .dropdown-content {
@@ -58,55 +61,85 @@
 .multiselect_fields {
   width: 300px;
   display: inline-block;
+  max-height: 150px;
+  overflow-y: scroll;
 }
 li {
   list-style: none;
   cursor: pointer;
-  color: lawngreen;
-  height: 25px;
-  margin-bottom: 10px;
-  margin-top: 10px;
+  color: #504949;
+  margin: 10px;
+  padding: 10px;
 }
 li:hover {
-  color: white;
+  background-color: #efefef;
+  border-radius: 5px;
+}
+.selected-items {
+  background-color: #e3f5ff;
+  border-radius: 5px;
+  color: #455aa9;
+}
+.list-selected::after {
+  position: absolute;
+  right: 1em;
+  content: "✔";
+  color: darkblue;
 }
 .multiselect_field {
   position: relative;
   display: inline-block;
-  background-color: white;
-  color: darkcyan;
+  background-color: #efefef;
   padding: 2px 4px;
   border-radius: 5px;
   font-family: Arial, Helvetica, sans-serif;
-  font-weight: 700;
   font-size: 14px;
-  margin-bottom: 5px;
-  max-width: 99%;
+  max-width: max-content;
+  margin: 5px;
+  padding: 10px;
 }
 .selected_content {
-  padding-right: 15px;
+  padding-right: 30px;
 }
 .del_icon {
   position: absolute;
-  top: 2px;
-  right: 3px;
+  top: 0px;
+  right: 0px;
   cursor: pointer;
+  padding: 10px;
+  border-radius: 3px;
+}
+.del_icon:hover {
+  background-color: #cfd0d2f2;
 }
 #myInput {
   box-sizing: border-box;
-  background-image: url("../../assets/images/search-icon.png");
-  background-position: -6px -5px;
+  /* background-image: url("../../assets/images/search-icon.png");
+  background-position: -6px -5px; */
   background-repeat: no-repeat;
-  /* position: fixed; */
   font-size: 16px;
-  padding: 14px 20px 12px 45px;
+  padding: 10px;
   border: none;
-  min-width: 300px;
-  border-bottom: 1px solid #ddd;
+  max-width: 300px;
 }
 
 #myInput:focus {
-  outline: 3px solid #ddd;
+  outline: none;
+}
+
+.btn-selectedValues {
+  background-color: #008cba;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  font-size: 16px;
+  margin-top: 70px;
+  cursor: pointer;
+}
+
+.btn-selectedValues:focus {
+  outline: none;
 }
 
 footer {
