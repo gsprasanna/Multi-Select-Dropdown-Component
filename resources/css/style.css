@@ -54,10 +54,6 @@
 .dropdown:hover .dropdown-content {
   display: block;
 }
-.multiselect_fields:empty:before {
-  content: attr(data-placeholder);
-  color: lightgrey;
-}
 .multiselect_fields {
   width: 300px;
   display: inline-block;
